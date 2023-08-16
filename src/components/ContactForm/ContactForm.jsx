@@ -14,7 +14,7 @@ import { toast } from 'react-hot-toast';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
@@ -23,8 +23,8 @@ export const ContactForm = () => {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setNumber(value);
+      case 'phone':
+        setPhone(value);
         break;
       default:
     }
@@ -35,7 +35,7 @@ export const ContactForm = () => {
 
     const newContact = {
       name,
-      number,
+      phone,
     };
 
     const isExist = contacts.some(
@@ -53,7 +53,7 @@ export const ContactForm = () => {
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -76,14 +76,14 @@ export const ContactForm = () => {
           />
         </Label>
 
-        <Label htmlFor="number-input">
+        <Label htmlFor="phone-input">
           <NumberIcon sx={{ mr: 1, my: 0.5 }} />
           <Input
             type="tel"
-            id="number-input"
-            name="number"
+            id="phone-input"
+            name="phone"
             label="Number"
-            value={number}
+            value={phone}
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
